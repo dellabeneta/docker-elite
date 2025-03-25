@@ -10,6 +10,8 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_USER: wordpress
       MYSQL_PASSWORD: senha_wordpress_segura
+    networks:
+      - wp_network
     restart: unless-stopped
 
   wordpress:
@@ -25,8 +27,16 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: senha_wordpress_segura
       WORDPRESS_DB_NAME: wordpress
+    networks:
+      - wp_network
     restart: unless-stopped
+
+  
 
 volumes:
   mysql_data:
   wordpress_data:
+
+networks:
+  wp_network:
+    driver: bridge
