@@ -31,8 +31,6 @@ services:
       - wp_network
     restart: unless-stopped
 
-  
-
 volumes:
   mysql_data:
   wordpress_data:
