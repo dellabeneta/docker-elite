@@ -1,0 +1,32 @@
+services:
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306" #utilizado para acessar o banco de dados e testar
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: senha_root_segura
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: senha_wordpress_segura
+    restart: unless-stopped
+
+  wordpress:
+    image: wordpress:latest
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    volumes:
+      - wordpress_data:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: senha_wordpress_segura
+      WORDPRESS_DB_NAME: wordpress
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+  wordpress_data:
