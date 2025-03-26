@@ -1,0 +1,6 @@
+services:
+  converter:
+    build: .
+    volumes:
+      - ./videos:/videos
+    command: ["/videos/video.mp4", "avi"]
