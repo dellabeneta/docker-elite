@@ -1,0 +1,6 @@
+services:
+  converter:
+    build: .  # Usa o Dockerfile do diretório atual para construir a imagem
+    volumes:
+      - "./:/data"  # Monta o diretório atual do host em /data no container
+    entrypoint: ["/converter"]  # Define o entrypoint como o binário Go
