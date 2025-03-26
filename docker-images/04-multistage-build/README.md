@@ -1,10 +1,10 @@
 tenha obviamente o docker instalado no seu SO.
 
- 1. Clone o repositório do projeto (se aplicável)
+1. Clone o repositório do projeto (se aplicável)
 git clone https://github.com/dellabeneta/docker-elite.git
-cd cd docker-images/04-multistage-build/
+cd docker-images/04-multistage-build/
 
- 2. Construa a imagem
+2. Construa a imagem
 docker compose build
 
 3. Converta um vídeo
