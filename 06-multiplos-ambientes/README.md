@@ -10,6 +10,7 @@ docker compose -p ecommerce-hml --env-file envs/.hml.env up -d
 docker compose -p ecommerce-prd --env-file envs/.prd.env up -d
 
 
+---
 
 O parâmetro -p define um namespace único
 
