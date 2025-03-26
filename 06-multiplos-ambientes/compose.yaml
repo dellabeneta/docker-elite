@@ -1,0 +1,43 @@
+services:
+  postgre:
+    container_name: ${POSTGRES_CONTAINER_NAME}
+    image: postgres:${POSTGRES_VERSION}
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - postgre_data:/var/lib/postgresql/data
+
+    networks:
+      - ecommerce_net
+
+  ecommerce:
+    container_name: ${ECOMMERCE_CONTAINER_NAME}
+    image: ${ECOMMERCE_IMAGE}
+    restart: always
+    environment:
+      DB_HOST: postgre
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_NAME: ${POSTGRES_DB}
+      DB_PORT: "5432"
+      FLASK_APP: index.py
+    ports:
+      - "${APP_PORT}:5000"
+    depends_on:
+      - postgre
+    networks:
+      - ecommerce_net
+
+volumes:
+  postgre_data:
+    name: ${POSTGRES_VOLUME}
+
+networks:
+  ecommerce_net:
+    name: ${NETWORK_NAME}
+    driver: bridge
