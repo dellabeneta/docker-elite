@@ -1,0 +1,2 @@
+DOCKERFILE perfeito e o hadolint n gerou saida, escrevi isso manualmente. após uma pesquisa sobre o ocorrido.
+Fiz um teste com o DOCKERFILE todo errado e o hadolint fez as correçoes bem como gerou o relaorio.
