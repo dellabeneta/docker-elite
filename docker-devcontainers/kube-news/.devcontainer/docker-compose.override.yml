@@ -1,0 +1,7 @@
+services:
+  app:
+    volumes:
+      - ../src:/app/src:cached  # Hot-reload do código
+    command: sleep infinity      # Mantém o container ativo
+    ports:
+      - 8080:8080               # Expõe a porta para acesso local

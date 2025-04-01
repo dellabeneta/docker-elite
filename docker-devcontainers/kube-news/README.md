@@ -1,15 +1,36 @@
-# Projeto kube-news
+### **Resumo dos Arquivos**:
+- **3 arquivos `docker-compose` no total**:
+  1. `.devcontainer/docker-compose.yml` (base)
+  2. `.devcontainer/docker-compose.override.yml` (dev)
+  3. `compose.yml` (produção, na raiz)
 
-### Objetivo
-O projeto Kube-news é uma aplicação escrita em NodeJS e tem como objetivo ser uma aplicação de exemplo pra trabalhar com o uso de containers.
+- **2 Dockerfiles**:
+  1. `.devcontainer/Dockerfile` (desenvolvimento)
+  2. `Dockerfile` na raiz (produção)
 
-### Configuração
-Pra configurar a aplicação, é preciso ter um banco de dados Postgre e pra definir o acesso ao banco, configure as variáveis de ambiente abaixo:
+---
 
-DB_DATABASE => Nome do banco de dados que vai ser usado.
+### **Como Usar**:
 
-DB_USERNAME => Usuário do banco de dados.
+#### **Ambiente de Desenvolvimento**:
+- O VS Code usará automaticamente os arquivos dentro de `.devcontainer`.
+- Comandos do VS Code: `Reopen in Container` (já aplica o override).
 
-DB_PASSWORD => Senha do usuário do banco de dados.
+#### **Ambiente de Produção**:
+```
+# Na raiz do projeto:
+docker compose -f compose.yml build
+docker compose -f compose.yml up -d
+```
 
-DB_HOST => Endereço do banco de dados.
+---
+
+### **Principais Diferenças**:
+| Característica          | Desenvolvimento               | Produção               |
+|-------------------------|-------------------------------|------------------------|
+| **Volumes**             | Mapeia `src/` para hot-reload | Código dentro da imagem |
+| **Comando do App**      | `sleep infinity`              | `node server.js`       |
+| **Portas**              | 8080:8080                     | 80:8080                |
+| **Dependências**        | Instala `devDependencies`     | Apenas `dependencies`  |
+
+Isso resolve sua dúvida? 😊

@@ -1,8 +1,9 @@
-FROM mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm
+# FROM mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm
+FROM node:20.10.0-bullseye
 
 WORKDIR /app
 
-USER node
+# USER node
 
 # [Optional] Uncomment this section to install additional OS packages.
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
