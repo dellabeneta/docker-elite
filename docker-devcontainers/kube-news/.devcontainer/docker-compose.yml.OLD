@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   app:
     build: 
@@ -27,12 +29,7 @@ services:
       POSTGRES_DB: kubenews
     ports:
       - 5432:5432
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
 
 networks:
   kubenews_net:
     driver: bridge
-
-volumes:
-  postgres_data:
