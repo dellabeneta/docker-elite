@@ -1,0 +1,24 @@
+{
+	"name": "fake-shop devcontainer",
+//	"dockerComposeFile": "docker-compose.yml",
+		
+	"dockerComposeFile": [
+		"docker-compose.yml",
+		"docker-compose.override.yml"
+	],
+	
+	"service": "app",
+	"workspaceFolder": "/app/src",
+	"postCreateCommand": "pip install -r requirements.txt",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.python",          // Suporte ao Python no VS Code
+				//"ms-python.vscode-pylance",  // Pylance para melhor análise estática
+				"humao.rest-client",        // Suporte a notebooks Jupyter
+				//"charliermarsh.ruff"         // Ruff para linting rápido
+				"ms-azuretools.vscode-docker" // Suporte ao Docker no VS Code
+			]
+		}
+	}
+}
